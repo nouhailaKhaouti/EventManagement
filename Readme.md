@@ -11,17 +11,18 @@
 ===
 
 ==> dependencies:
+
 ("
 
 ==Explanation of the elements:
 
-<groupId>: Identifies the group or organization that created the library. In this case, it's "jakarta.persistence."
+groupId: Identifies the group or organization that created the library. In this case, it's "jakarta.persistence."
 
-<artifactId>: Specifies the name of the library or artifact. Here, it's "jakarta.persistence-api."
+artifactId: Specifies the name of the library or artifact. Here, it's "jakarta.persistence-api."
 
-<version>: Specifies the version of the library you want to use. In this case, it's "3.0.0."
+version: Specifies the version of the library you want to use. In this case, it's "3.0.0."
 
-<scope>: Defines the scope of the dependency. "Provided" means that the dependency is expected to be provided by the runtime environment and should not be included in the final package (JAR or WAR).
+scope: Defines the scope of the dependency. "Provided" means that the dependency is expected to be provided by the runtime environment and should not be included in the final package (JAR or WAR).
 
 ")
 
@@ -107,42 +108,64 @@ The dependency you provided is for the Jakarta Persistence API, which is used in
 ``
 
 1-jakarta.persistence.jdbc.driver:Specifies the JDBC driver class for your database.
+
                                 in my case sence i'm using potgres Driver my value attribute while be like the following:
+                                
                                 " Value: com.postgres.cj.jdbc.Driver"
 
 2-jakarta.persistence.jdbc.url:Specifies the JDBC URL for your database.
+
                                this is an example what the Database Url should be like:
+                               
                                "Value: jdbc:postgresql://localhost:5432/Event"
 
 3-jakarta.persistence.jdbc.user:Specifies the username for connecting to the database.
+
                                 example : This is the username for connecting to the PostgreSQL database.
+                                
                                 Value: postgres
 
 4-jakarta.persistence.jdbc.password:Specifies the password for connecting to the database.
+
                                     example:This is the password for connecting to the PostgreSQL database.
+                                    
                                     Value: Password
 
 5-hibernate.show_sql:Specifies whether to log SQL statements to the console.
+
                           Value: true
+                          
                           When set to true, Hibernate will print SQL statements to the console.
 
 6-hibernate.hbm2ddl.auto:Specifies the Hibernate feature for automatic DDL generation.
+
                          Value: update
+                         
                          This setting allows Hibernate to automatically update the database schema based on changes in the entity classes.
+                         
                          depending on the value you can controle DDL generation :
+                         
                             --create:
                                     Hibernate will attempt to create the database schema from scratch.
                                     It will drop existing tables and recreate them, potentially resulting in data loss.
+                                    
                             --update:
+                            
                                     Hibernate will update the database schema to reflect the current configuration.
                                     It will add new tables, columns, or constraints, but it won't drop or modify existing ones.
+                                    
                             --validate:
+                            
                                     Hibernate will validate the database schema against the current configuration.
                                     It won't make any changes to the database.
+                                    
                             --create-drop:
+                            
                                     Similar to create, but the database schema will be dropped when the SessionFactory is closed.
                                     This is useful for testing and development, but it can lead to data loss.
+                                    
                             --none:
+                            
                                     Hibernate will not perform any automatic schema generation or validation.
                                     You are responsible for ensuring that the database schema matches the Hibernate configuration.
 
@@ -151,7 +174,9 @@ The dependency you provided is for the Jakarta Persistence API, which is used in
 ==> servlet configuration :
 
 This is the last step in our configuration , in wiche we gonna automatic DDL generation , when running the project with what we've done until now , my entities can be created in my database , and the simple raison why , creation of an EntityManagerFactory==>(It manages the database connection(s) associated with the persistence unit. When an EntityManagerFactory is created, it establishes a connection pool, and each EntityManager obtained from the factory operates within the context of this connection pool.), and that's exacly what we gonna implement in our code:
+
 -first step is the create an EntityManagerFactory:
+
  ``
     private final EntityManagerFactory entityManagerFactory;
 

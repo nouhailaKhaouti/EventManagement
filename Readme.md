@@ -3,13 +3,14 @@
 ====>project structure:
 
 1- the first step is to create a maven project using idle like intellij
+
 2- go to your pom.xml file and choose the type of packaging you want to create (in our case we gonna choose war for what is provide as it the standard approche when creating a jakarta EE , java EE  project  ) 
+
 3- install tomCat lastversion (in my case 10) then connect it with my project using "war"
 
 ===
 
 ==> dependencies:
-
 ("
 
 ==Explanation of the elements:
@@ -26,12 +27,13 @@
 
 
 1- Hibernate.core dependency:
-
-`` <dependency>
+`` 
+    <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>6.0.2.Final</version>
     </dependency>
+    
 ``
 
 Hibernate is an Object-Relational Mapping (ORM) framework that simplifies database interaction in Java applications.
@@ -51,7 +53,6 @@ Hibernate is an Object-Relational Mapping (ORM) framework that simplifies databa
 This dependency provides the Jakarta Servlet API, which is necessary for developing servlets in your application. The scope "provided" indicates that the dependency is expected to be provided by the runtime environment.
 
 3-JDBC Driver:
-
 you can add any jdbc driver depending on what sgbd your gonna use for your project
 
 ``
@@ -60,6 +61,7 @@ you can add any jdbc driver depending on what sgbd your gonna use for your proje
       <artifactId>postgresql</artifactId>
       <version>42.6.0</version>
     </dependency>
+    
 ``
 
 This is the JDBC driver for PostgreSQL, enabling your Java application to connect to a PostgreSQL database.
@@ -73,7 +75,9 @@ This is the JDBC driver for PostgreSQL, enabling your Java application to connec
         <version>3.0.0</version>
         <scope>provided</scope>
     </dependency>
+    
 ``
+
 The dependency you provided is for the Jakarta Persistence API, which is used in Java EE or Jakarta EE applications for working with persistence and databases. 
 
 
@@ -101,6 +105,7 @@ The dependency you provided is for the Jakarta Persistence API, which is used in
     </persistence>
 
 ``
+
 1-jakarta.persistence.jdbc.driver:Specifies the JDBC driver class for your database.
                                 in my case sence i'm using potgres Driver my value attribute while be like the following:
                                 " Value: com.postgres.cj.jdbc.Driver"
@@ -118,8 +123,8 @@ The dependency you provided is for the Jakarta Persistence API, which is used in
                                     Value: Password
 
 5-hibernate.show_sql:Specifies whether to log SQL statements to the console.
-                     Value: true
-                    When set to true, Hibernate will print SQL statements to the console.
+                          Value: true
+                          When set to true, Hibernate will print SQL statements to the console.
 
 6-hibernate.hbm2ddl.auto:Specifies the Hibernate feature for automatic DDL generation.
                          Value: update
@@ -142,6 +147,7 @@ The dependency you provided is for the Jakarta Persistence API, which is used in
                                     You are responsible for ensuring that the database schema matches the Hibernate configuration.
 
 ===
+
 ==> servlet configuration :
 
 This is the last step in our configuration , in wiche we gonna automatic DDL generation , when running the project with what we've done until now , my entities can be created in my database , and the simple raison why , creation of an EntityManagerFactory==>(It manages the database connection(s) associated with the persistence unit. When an EntityManagerFactory is created, it establishes a connection pool, and each EntityManager obtained from the factory operates within the context of this connection pool.), and that's exacly what we gonna implement in our code:
@@ -154,6 +160,7 @@ This is the last step in our configuration , in wiche we gonna automatic DDL gen
     }
 
  ``
+ 
  ``
      private final Repository repository;
 
@@ -162,6 +169,7 @@ This is the last step in our configuration , in wiche we gonna automatic DDL gen
     }
 
  ``
+ 
 -next is to create a new servlet where we gonna call our service in the init methode :
 
 ``

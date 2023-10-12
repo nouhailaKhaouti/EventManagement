@@ -7,8 +7,11 @@
 3- install tomCat lastversion (in my case 10) then connect it with my project using "war"
 
 ===
+
 ==> dependencies:
+
 ("
+
 ==Explanation of the elements:
 
 <groupId>: Identifies the group or organization that created the library. In this case, it's "jakarta.persistence."
@@ -18,10 +21,12 @@
 <version>: Specifies the version of the library you want to use. In this case, it's "3.0.0."
 
 <scope>: Defines the scope of the dependency. "Provided" means that the dependency is expected to be provided by the runtime environment and should not be included in the final package (JAR or WAR).
+
 ")
 
 
 1- Hibernate.core dependency:
+
 `` <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
@@ -40,10 +45,13 @@ Hibernate is an Object-Relational Mapping (ORM) framework that simplifies databa
             <version>5.0.0</version>
             <scope>provided</scope>
         </dependency>
+        
 ``
+
 This dependency provides the Jakarta Servlet API, which is necessary for developing servlets in your application. The scope "provided" indicates that the dependency is expected to be provided by the runtime environment.
 
 3-JDBC Driver:
+
 you can add any jdbc driver depending on what sgbd your gonna use for your project
 
 ``
@@ -70,6 +78,7 @@ The dependency you provided is for the Jakarta Persistence API, which is used in
 
 
 === 
+
 ==>persistence file:
 
 - now after adding dependencies that you need  , you can create your entities , then you need the configurate your persistence.xml file (if you didn't generate it when creating your project , you can just create one) :
@@ -166,7 +175,9 @@ This is the last step in our configuration , in wiche we gonna automatic DDL gen
         }
 
 ``
+
 -- The loadOnStartup attribute in the @WebServlet annotation is used to specify the order in which servlets should be initialized when the web application starts. It is an optional attribute that takes an integer value, and servlets with lower values for loadOnStartup will be initialized before servlets with higher values.
+
 -- in the example above, the loadOnStartup attribute is set to 1. This means that the servlet with this annotation will be initialized during the startup of the web application, and its init method will be called before any servlets with a higher loadOnStartup value.
 
 =====>with this we can say that our project configuration is done

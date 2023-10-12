@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 
-public class User {
+public class UserE {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +27,7 @@ public class User {
         return id;
     }
 
-    public User(String username, String firstName, String lastName, String email, String password) {
+    public UserE(String username, String firstName, String lastName, String email, String password) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,7 +35,7 @@ public class User {
         this.password = password;
     }
 
-    public User() {
+    public UserE() {
     }
 
     public String getUsername() {
@@ -82,7 +82,7 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+        UserE user = (UserE) o;
         return Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
     }
 

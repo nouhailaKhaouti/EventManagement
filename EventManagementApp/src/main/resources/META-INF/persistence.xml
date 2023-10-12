@@ -8,8 +8,8 @@
       <property name="javax.persistence.jdbc.driver" value="com.postgres.cj.jdbc.Driver"/>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Event"/>
       <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+      <property name="hibernate.show_sql" value="true"/>
       <property name="jakarta.persistence.jdbc.password" value="Nouhailakhaouti1..."/>
-
       <property name="hibernate.hbm2ddl.auto" value="update"/>
     </properties>
   </persistence-unit>

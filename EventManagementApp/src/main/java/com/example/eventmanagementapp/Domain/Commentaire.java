@@ -11,7 +11,7 @@ public class Commentaire {
     private String text;
     private Integer evaluation;
     @ManyToOne
-    private User user;
+    private UserE user;
     @ManyToOne
     private Event event;
     public void setId(Long id) {
@@ -38,11 +38,11 @@ public class Commentaire {
         this.evaluation = evaluation;
     }
 
-    public User getUser() {
+    public UserE getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserE user) {
         this.user = user;
     }
 
@@ -54,7 +54,7 @@ public class Commentaire {
         this.event = event;
     }
 
-    public Commentaire(String text, Integer evaluation, User user, Event event) {
+    public Commentaire(String text, Integer evaluation, UserE user, Event event) {
         this.text = text;
         this.evaluation = evaluation;
         this.user = user;
